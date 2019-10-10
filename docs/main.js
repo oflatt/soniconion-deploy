@@ -5720,12 +5720,49 @@ var author$project$Model$initialProgram = _List_fromArray(
 		_List_fromArray(
 		[author$project$Model$sine, author$project$Model$sine2, author$project$Model$join, author$project$Model$play])
 	]);
+var author$project$Model$pageNames = _List_fromArray(
+	['Home', 'Unused']);
+var elm$core$List$any = F2(
+	function (isOkay, list) {
+		any:
+		while (true) {
+			if (!list.b) {
+				return false;
+			} else {
+				var x = list.a;
+				var xs = list.b;
+				if (isOkay(x)) {
+					return true;
+				} else {
+					var $temp$isOkay = isOkay,
+						$temp$list = xs;
+					isOkay = $temp$isOkay;
+					list = $temp$list;
+					continue any;
+				}
+			}
+		}
+	});
+var elm$core$List$member = F2(
+	function (x, xs) {
+		return A2(
+			elm$core$List$any,
+			function (a) {
+				return _Utils_eq(a, x);
+			},
+			xs);
+	});
 var author$project$Model$urlToPageName = function (url) {
-	return (url.path === '/') ? 'Home' : A3(
-		elm$core$String$slice,
-		1,
-		elm$core$String$length(url.path),
-		url.path);
+	if (elm$core$String$length(url.path) > 1) {
+		var potentialName = A3(
+			elm$core$String$slice,
+			1,
+			elm$core$String$length(url.path),
+			url.path);
+		return A2(elm$core$List$member, potentialName, author$project$Model$pageNames) ? potentialName : 'Home';
+	} else {
+		return 'Home';
+	}
 };
 var elm$core$Basics$negate = function (n) {
 	return -n;
@@ -7674,27 +7711,6 @@ var elm$core$Basics$composeL = F3(
 			f(x));
 	});
 var elm$core$Basics$not = _Basics_not;
-var elm$core$List$any = F2(
-	function (isOkay, list) {
-		any:
-		while (true) {
-			if (!list.b) {
-				return false;
-			} else {
-				var x = list.a;
-				var xs = list.b;
-				if (isOkay(x)) {
-					return true;
-				} else {
-					var $temp$isOkay = isOkay,
-						$temp$list = xs;
-					isOkay = $temp$isOkay;
-					list = $temp$list;
-					continue any;
-				}
-			}
-		}
-	});
 var elm$core$List$all = F2(
 	function (isOkay, list) {
 		return !A2(
