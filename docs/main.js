@@ -9520,7 +9520,7 @@ var author$project$View$view = function (model) {
 							_List_Nil),
 							author$project$View$makeTitle,
 							A2(author$project$View$pagebutton, 'Home', model),
-							A2(author$project$View$pagebutton, 'Listings', model),
+							A2(author$project$View$pagebutton, 'Unused', model),
 							A3(
 							author$project$View$makePage,
 							'Home',
@@ -9528,7 +9528,7 @@ var author$project$View$view = function (model) {
 							model),
 							A3(
 							author$project$View$makePage,
-							'Listings',
+							'Unused',
 							A3(author$project$View$listing, './assets/placeholder.png', 'Listing title', model),
 							model)
 						])))
